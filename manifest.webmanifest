@@ -1,0 +1,16 @@
+{
+  "name": "Daily Ponder",
+  "short_name": "Ponder",
+  "description": "A quote to ponder, today in history, and a tiny daily journal.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3ede8",
+  "theme_color": "#f3ede8",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

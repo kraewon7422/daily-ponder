@@ -1,0 +1,1131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Daily Ponder</title>
+<meta name="description" content="A quote to ponder, today in history, and a tiny daily journal.">
+<meta name="theme-color" content="#f3ede8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#120e22" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<script>try { const t = localStorage.getItem('ponder.theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  @property --c1 { syntax: '<color>'; inherits: true; initial-value: #ffb3c7; }
+  @property --c2 { syntax: '<color>'; inherits: true; initial-value: #a9b6ff; }
+  @property --c3 { syntax: '<color>'; inherits: true; initial-value: #9fe6d6; }
+  @property --c4 { syntax: '<color>'; inherits: true; initial-value: #ffd9a3; }
+
+  :root {
+    --bg: #f3ede8;
+    --ink: #221c33;
+    --muted: #6e6784;
+    --card: rgba(255, 255, 255, .52);
+    --card-strong: rgba(255, 255, 255, .72);
+    --line: rgba(34, 28, 51, .09);
+    --field: rgba(255, 255, 255, .6);
+    --accent: #6d55e8;
+    --blob-op: .85;
+    --grain-op: .07;
+    --shadow: 0 10px 40px -12px rgba(60, 40, 110, .18);
+    --serif: 'Fraunces', Georgia, 'Times New Roman', 'Noto Serif KR', 'Batang', 'Yu Mincho', 'Songti SC', serif;
+    --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', 'Malgun Gothic', 'Yu Gothic', 'Microsoft YaHei', sans-serif;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #120e22;
+      --ink: #f1ecff;
+      --muted: #a8a0c4;
+      --card: rgba(30, 24, 52, .5);
+      --card-strong: rgba(36, 29, 62, .78);
+      --line: rgba(255, 255, 255, .08);
+      --field: rgba(255, 255, 255, .06);
+      --accent: #a996ff;
+      --blob-op: .42;
+      --grain-op: .05;
+      --shadow: 0 10px 40px -12px rgba(0, 0, 0, .5);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #120e22;
+    --ink: #f1ecff;
+    --muted: #a8a0c4;
+    --card: rgba(30, 24, 52, .5);
+    --card-strong: rgba(36, 29, 62, .78);
+    --line: rgba(255, 255, 255, .08);
+    --field: rgba(255, 255, 255, .06);
+    --accent: #a996ff;
+    --blob-op: .42;
+    --grain-op: .05;
+    --shadow: 0 10px 40px -12px rgba(0, 0, 0, .5);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font: 15px/1.55 var(--sans);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- living background: soft drifting color fields ---------- */
+  .aurora {
+    position: fixed; inset: 0; z-index: -2; overflow: hidden; pointer-events: none;
+    animation: palette 48s ease-in-out infinite alternate;
+  }
+  .aurora span {
+    position: absolute; width: 70vmax; height: 70vmax; border-radius: 50%;
+    opacity: var(--blob-op); will-change: transform;
+  }
+  .aurora .b1 { background: radial-gradient(circle, var(--c1) 0%, transparent 62%); top: -25vmax; left: -20vmax; animation: d1 34s ease-in-out infinite alternate; }
+  .aurora .b2 { background: radial-gradient(circle, var(--c2) 0%, transparent 62%); top: -15vmax; right: -30vmax; animation: d2 41s ease-in-out infinite alternate; }
+  .aurora .b3 { background: radial-gradient(circle, var(--c3) 0%, transparent 62%); bottom: -35vmax; left: 5vmax; animation: d3 38s ease-in-out infinite alternate; }
+  .aurora .b4 { background: radial-gradient(circle, var(--c4) 0%, transparent 62%); bottom: -30vmax; right: -15vmax; animation: d4 45s ease-in-out infinite alternate; }
+  @keyframes d1 { to { transform: translate(18vmax, 14vmax) scale(1.15); } }
+  @keyframes d2 { to { transform: translate(-16vmax, 20vmax) scale(.9); } }
+  @keyframes d3 { to { transform: translate(20vmax, -12vmax) scale(1.1); } }
+  @keyframes d4 { to { transform: translate(-22vmax, -16vmax) scale(1.2); } }
+  @keyframes palette {
+    0%   { --c1: #ffb3c7; --c2: #a9b6ff; --c3: #9fe6d6; --c4: #ffd9a3; }
+    33%  { --c1: #c9b2ff; --c2: #8fd3ff; --c3: #ffc2a8; --c4: #b8f0c8; }
+    66%  { --c1: #ffc8a0; --c2: #f4a8d8; --c3: #a6c8ff; --c4: #d5c2ff; }
+    100% { --c1: #9fe0e6; --c2: #ffb8b8; --c3: #c4b5ff; --c4: #ffe3a6; }
+  }
+  /* paper grain on top of the colors */
+  .grain {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: var(--grain-op);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .aurora, .aurora span { animation: none; }
+  }
+
+  /* ---------- layout ---------- */
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 28px 20px 60px; }
+  header.top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 26px; }
+  .brand { font: 600 13px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+  .brand img { width: 22px; height: 22px; }
+  .today { font: 400 clamp(30px, 5vw, 46px)/1.1 var(--serif); margin: 10px 0 4px; letter-spacing: -.01em; }
+  .greet { color: var(--muted); margin: 0; }
+
+  .grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 20px; margin-top: 20px; }
+  @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 26px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(22px) saturate(150%);
+    -webkit-backdrop-filter: blur(22px) saturate(150%);
+    min-width: 0;
+  }
+  .card h2 { font: 600 12px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  :is(:lang(ko), :lang(ja), :lang(zh)) :is(.card h2, .tag) { letter-spacing: .02em; }
+  .card h3 { font: 500 14px/1.3 var(--sans); margin: 18px 0 8px; }
+  .card h3:first-of-type { margin-top: 0; }
+
+  /* ---------- quote ---------- */
+  .quote-card { padding: clamp(26px, 5vw, 48px); }
+  .tag { display: inline-block; font: 500 11px/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; background: var(--field); border: 1px solid var(--line); color: var(--muted); }
+  blockquote { margin: 18px 0 14px; font: 350 clamp(22px, 3.4vw, 34px)/1.35 var(--serif); letter-spacing: -.005em; text-wrap: pretty; }
+  blockquote::before { content: '\201C'; } blockquote::after { content: '\201D'; }
+  .cite { color: var(--muted); }
+  .cite b { color: var(--ink); font-weight: 600; }
+  .quote-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  #qFav[aria-pressed=true] { color: #d6457a; border-color: color-mix(in srgb, #d6457a 40%, transparent); }
+  .fade { transition: opacity .35s ease; }
+  .fade.out { opacity: 0; }
+
+  /* ---------- controls ---------- */
+  button, .btn, select {
+    font: 500 13px/1.35 var(--sans); color: var(--ink); cursor: pointer;
+    background: var(--field); border: 1px solid var(--line); border-radius: 999px;
+    padding: 7px 14px; display: inline-flex; align-items: center; gap: 6px;
+    transition: background .2s, transform .1s;
+  }
+  select { appearance: none; padding-right: 28px; background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%); background-position: right 14px center, right 9px center; background-size: 5px 5px; background-repeat: no-repeat; }
+  select option { color: #221c33; background: #fff; }
+  button:hover, .btn:hover, select:hover { background-color: var(--card-strong); }
+  button:active { transform: scale(.97); }
+  button:disabled { opacity: .5; cursor: not-allowed; }
+  button.primary { background: var(--ink); color: var(--bg); border-color: transparent; }
+  input[type=text] {
+    width: 100%; font: 400 15px/1.4 var(--sans); color: var(--ink);
+    background: var(--field); border: 1px solid var(--line); border-radius: 14px;
+    padding: 11px 14px; outline: none; transition: border-color .2s, background .2s;
+  }
+  input[type=text]:focus { border-color: var(--accent); background: var(--card-strong); }
+  input::placeholder { color: var(--muted); opacity: .8; }
+  .thought { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); }
+  .thought label { font-size: 13px; color: var(--muted); display: block; margin-bottom: 8px; }
+  .hint { font-size: 12px; color: var(--muted); }
+
+  /* ---------- mood ---------- */
+  .moods { display: flex; gap: 8px; flex-wrap: wrap; }
+  .moods button { font-size: 22px; width: 46px; height: 46px; padding: 0; justify-content: center; border-radius: 16px; }
+  .moods button[aria-pressed=true] { background: var(--card-strong); border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent); }
+  .row { display: flex; gap: 10px; align-items: center; }
+  .good { display: grid; gap: 8px; }
+  .good .row span { color: var(--muted); font: 500 13px var(--sans); width: 14px; }
+  .streak { font: 500 12px/1 var(--sans); letter-spacing: 0; text-transform: none; color: var(--ink); background: var(--field); border: 1px solid var(--line); padding: 6px 10px; border-radius: 999px; white-space: nowrap; transition: color .3s, border-color .3s; }
+  .streak.flash { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+
+  /* ---------- on this day ---------- */
+  .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+  .tabs button { padding: 6px 12px; font-size: 12px; }
+  .tabs button[aria-selected=true] { background: var(--ink); color: var(--bg); }
+  .events { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+  .events li { display: grid; grid-template-columns: 64px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .events li:last-child { border-bottom: 0; }
+  .yr { font: 500 17px/1.2 var(--serif); }
+  .ago { display: block; font: 400 11px var(--sans); color: var(--muted); margin-top: 3px; }
+  .events a { color: inherit; text-decoration: none; }
+  .events a:hover { text-decoration: underline; text-decoration-color: var(--accent); }
+  .muted { color: var(--muted); }
+  .more { margin-top: 12px; }
+  .src-note { font-size: 12px; color: var(--muted); margin: -6px 0 10px; }
+
+  /* ---------- calendar ---------- */
+  .cal-head { display: flex; align-items: center; gap: 8px; }
+  .cal-head button { padding: 5px 10px; }
+  .cal-title { font: 500 15px var(--serif); min-width: 120px; text-align: center; text-transform: none; letter-spacing: 0; color: var(--ink); }
+  .cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+  .cal .wd { font: 500 11px var(--sans); color: var(--muted); text-align: center; padding-bottom: 4px; }
+  .cal .day {
+    aspect-ratio: 1; border-radius: 12px; border: 1px solid var(--line); background: var(--field);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font: 500 11px var(--sans); color: var(--muted); padding: 0; gap: 1px; min-width: 0;
+  }
+  .cal .day .e { font-size: 17px; line-height: 1; }
+  .cal .day.has { color: var(--ink); }
+  .cal .day.is-today { border-color: var(--accent); }
+  .cal .day.sel { box-shadow: 0 0 0 2px var(--accent); }
+  .cal .day.empty { visibility: hidden; }
+  .legend { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px; font-size: 12px; color: var(--muted); }
+
+  /* ---------- year in review ---------- */
+  .year { display: grid; grid-template-columns: max-content repeat(31, 1fr); gap: 3px; align-items: center; }
+  .year .m { font: 500 10px var(--sans); color: var(--muted); padding-right: 4px; }
+  .year .c { aspect-ratio: 1; border-radius: 3px; background: var(--field); border: 1px solid var(--line); min-width: 0; }
+  .year .c.w { background: color-mix(in srgb, var(--accent) 22%, transparent); }
+  .year .c.is-today { outline: 1.5px solid var(--accent); outline-offset: 1px; }
+  .year .c:not(.x) { cursor: pointer; }
+  .year .c:not(.x):hover { transform: scale(1.35); }
+  .year .c.sel { outline: 2px solid var(--ink); outline-offset: 1px; }
+  .year .c.x { visibility: hidden; }
+  .yr-stats { display: grid; gap: 14px; margin-top: 18px; }
+  .yr-stats .big { font: 400 26px/1.1 var(--serif); }
+  .mix { display: flex; height: 10px; border-radius: 999px; overflow: hidden; background: var(--field); border: 1px solid var(--line); }
+  .mix span { height: 100%; }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { font-size: 13px; padding: 5px 10px; border-radius: 999px; background: var(--field); border: 1px solid var(--line); }
+  .chip small { color: var(--muted); margin-left: 4px; }
+  .label { font: 500 12px var(--sans); color: var(--muted); margin-bottom: 6px; }
+
+  /* ---------- favorites ---------- */
+  .favs { display: grid; gap: 8px; max-height: 460px; overflow-y: auto; }
+  .fav { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: start; padding: 12px 14px; border-radius: 16px; background: var(--field); border: 1px solid var(--line); }
+  .fav .t { font: 400 15px/1.4 var(--serif); cursor: pointer; }
+  .fav .t:hover { color: var(--accent); }
+  .fav .a { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .fav button { padding: 4px 9px; font-size: 12px; }
+
+  /* ---------- entries ---------- */
+  .entry { padding: 14px 16px; border-radius: 18px; background: var(--field); border: 1px solid var(--line); margin-top: 10px; }
+  .entry .when { font: 500 15px var(--serif); margin-bottom: 6px; }
+  .entry p { margin: 4px 0; }
+  .entry ul { margin: 4px 0; padding-left: 18px; }
+  .entry .q { font: italic 400 14px/1.4 var(--serif); color: var(--muted); }
+  .empty-note { color: var(--muted); font-style: italic; font-family: var(--serif); }
+
+  /* ---------- auth + footer ---------- */
+  .auth { display: flex; align-items: center; gap: 10px; flex-shrink: 0; flex-wrap: wrap; }
+  .auth img { width: 32px; height: 32px; border-radius: 50%; }
+  .auth .name { font-size: 13px; color: var(--muted); max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  footer { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; color: var(--muted); font-size: 12px; }
+  footer .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  #toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px); opacity: 0; transition: .3s; background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 999px; font-size: 13px; pointer-events: none; z-index: 5; }
+  #toast.on { opacity: 1; transform: translate(-50%, 0); }
+
+  /* ---------- today's read ---------- */
+  .read-title { font: 400 clamp(22px, 2.6vw, 28px)/1.25 var(--serif); margin: 14px 0 6px; text-wrap: balance; }
+  .read-by { color: var(--muted); font-size: 14px; }
+  .read-why { font: italic 400 16px/1.5 var(--serif); margin: 14px 0 0; }
+  a.btn { text-decoration: none; }
+  .wide { grid-column: 1 / -1; }
+  #theme { width: 36px; height: 36px; padding: 0; justify-content: center; font-size: 16px; }
+
+  @media (max-width: 560px) {
+    .wrap { padding: 20px 16px 48px; }
+    header.top { flex-direction: column; }
+    .card { padding: 20px; border-radius: 22px; }
+    .card h2 { flex-wrap: wrap; row-gap: 10px; }
+    .cal-title { min-width: 0; }
+    .events li { grid-template-columns: 54px 1fr; }
+    .year { gap: 2px; }
+    .year .c { border-radius: 2px; border: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span><span class="b4"></span></div>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="brand"><img src="icon.svg" alt="">Daily Ponder</div>
+      <h1 class="today" id="today"></h1>
+      <p class="greet" id="greet"></p>
+    </div>
+    <div class="auth">
+      <select id="lang" aria-label="Language"></select>
+      <button id="theme"></button>
+      <span class="auth" id="auth"></span>
+    </div>
+  </header>
+
+  <!-- quote -->
+  <section class="card quote-card">
+    <div class="fade" id="quoteBox">
+      <span class="tag" id="qField"></span>
+      <blockquote id="qText" lang="en"></blockquote>
+      <div class="cite">— <b id="qAuthor"></b><span id="qSource"></span></div>
+    </div>
+    <div class="quote-actions">
+      <button id="qNext" data-t="another"></button>
+      <button id="qBack" data-t="back" hidden></button>
+      <button id="qFav" aria-pressed="false"></button>
+      <button id="qShare" data-t="share"></button>
+      <button id="qCopy" data-t="copy"></button>
+    </div>
+    <div class="thought">
+      <label for="thought" data-t="thoughtLabel"></label>
+      <input type="text" id="thought" maxlength="200" data-ph="thoughtPh">
+    </div>
+  </section>
+
+  <div class="grid">
+    <!-- on this day -->
+    <section class="card">
+      <h2><span data-t="otd"></span> <span class="muted" id="otdDate" style="text-transform:none;letter-spacing:0"></span></h2>
+      <div class="tabs" role="tablist" id="otdTabs">
+        <button role="tab" data-k="selected" data-t="highlights" aria-selected="true"></button>
+        <button role="tab" data-k="events" data-t="events" aria-selected="false"></button>
+        <button role="tab" data-k="births" data-t="born" aria-selected="false"></button>
+        <button role="tab" data-k="deaths" data-t="died" aria-selected="false"></button>
+      </div>
+      <p class="src-note" id="otdNote" hidden></p>
+      <ul class="events" id="otdList"></ul>
+      <button class="more" id="otdMore" data-t="showMore" hidden></button>
+    </section>
+
+    <!-- scribbles -->
+    <section class="card">
+      <h2><span data-t="strokes"></span> <span class="streak" id="streak" hidden></span></h2>
+      <h3 data-t="howAreYou"></h3>
+      <div class="moods" id="moods"></div>
+      <div style="margin-top:10px">
+        <input type="text" id="word" maxlength="24" data-ph="wordPh">
+      </div>
+      <h3 data-t="oneLine"></h3>
+      <input type="text" id="diary" maxlength="200" data-ph="diaryPh">
+      <h3 data-t="threeGood"></h3>
+      <div class="good">
+        <div class="row"><span>1</span><input type="text" data-good="0" maxlength="80" data-ph="good1"></div>
+        <div class="row"><span>2</span><input type="text" data-good="1" maxlength="80" data-ph="good2"></div>
+        <div class="row"><span>3</span><input type="text" data-good="2" maxlength="80" data-ph="good3"></div>
+      </div>
+    </section>
+
+    <!-- today's read -->
+    <section class="card">
+      <h2 data-t="todaysRead"></h2>
+      <div class="fade" id="readBox">
+        <span class="tag" id="rField"></span> <span class="tag" id="rKind"></span>
+        <div class="read-title" id="rTitle" lang="en"></div>
+        <div class="read-by" id="rBy"></div>
+        <p class="read-why" id="rWhy" lang="en"></p>
+      </div>
+      <div class="quote-actions">
+        <button id="rNext" data-t="anotherRead"></button>
+        <a class="btn" id="rLink" target="_blank" rel="noopener" data-t="lookUp"></a>
+      </div>
+    </section>
+
+    <!-- your past -->
+    <section class="card">
+      <h2 data-t="pastTitle"></h2>
+      <div id="pastYou"></div>
+    </section>
+
+    <!-- mood calendar -->
+    <section class="card">
+      <h2><span data-t="moodCal"></span>
+        <span class="cal-head"><button id="calPrev">‹</button><span class="cal-title" id="calTitle"></span><button id="calNext">›</button></span>
+      </h2>
+      <div class="cal" id="cal"></div>
+      <div class="legend" id="legend"></div>
+      <div id="dayDetail"></div>
+    </section>
+
+    <!-- favorites -->
+    <section class="card">
+      <h2><span data-t="favorites"></span> <span class="muted" id="favCount" style="letter-spacing:0"></span></h2>
+      <div class="favs" id="favs"></div>
+    </section>
+
+    <!-- year in review -->
+    <section class="card wide">
+      <h2><span data-t="yearTitle"></span>
+        <span class="cal-head"><button id="yrPrev">‹</button><span class="cal-title" id="yrTitle" style="min-width:60px"></span><button id="yrNext">›</button></span>
+      </h2>
+      <div class="year" id="year"></div>
+      <div id="yrDetail"></div>
+      <div class="yr-stats" id="yrStats"></div>
+    </section>
+  </div>
+
+  <footer>
+    <span id="status"></span>
+    <span class="actions">
+      <button id="exportBtn" data-t="export"></button>
+      <button id="importBtn" data-t="import"></button>
+      <input type="file" id="importFile" accept="application/json,.json" hidden>
+    </span>
+  </footer>
+</div>
+<div id="toast" role="status"></div>
+
+<script type="module">
+import { QUOTES } from './quotes.js';
+import { firebaseConfig } from './firebase-config.js';
+import { READS } from './reads.js';
+
+/* ---------------- languages ---------------- */
+// Quotes stay in their verified English wording; everything else follows the chosen language.
+// wiki: which Wikipedia edition to read "On this day" from (ko/ja have no feed, so their date pages are parsed instead).
+const I18N = {
+  en: { name: 'English', wiki: 'en',
+    morning: 'Good morning.', afternoon: 'Good afternoon.', evening: 'Good evening.', late: 'Still up?', sub: 'Something to ponder today.',
+    another: '↻ Another one', back: '← Today’s quote', copy: 'Copy', copied: 'Copied', copyFail: 'Could not copy',
+    thoughtLabel: 'Your thought on today’s quote', thoughtPh: 'It makes me think of…',
+    otd: 'On this day', highlights: 'Highlights', events: 'Events', born: 'Born', died: 'Died',
+    loading: 'Loading from Wikipedia…', otdFail: 'Couldn’t reach Wikipedia — check your internet and reload.', showMore: 'Show more',
+    yrsAgo: n => `${n} yrs ago`, bc: 'BC', fromEnglish: '',
+    strokes: 'Today, in a few strokes', saved: 'Saved', howAreYou: 'How are you?', wordPh: 'Today in one word',
+    oneLine: 'One line about today', diaryPh: 'Just one sentence is enough.', threeGood: 'Three good things',
+    good1: 'Something small counts', good2: 'A taste, a sound, a person', good3: 'Something you did',
+    moodCal: 'Mood calendar', moods: ['Low', 'Meh', 'Okay', 'Good', 'Great'],
+    pastTitle: 'You, on this day', pastEmpty: 'Nothing here yet. Whatever you write today will be waiting for you on this date next year.',
+    yearsAgo: n => `${n} year${n > 1 ? 's' : ''} ago`, nothing: 'Nothing written this day.', on: 'on',
+    local: 'Saved on this device', synced: 'Synced to your account ✓', syncing: 'Syncing…', syncFail: 'Sync failed: ',
+    export: 'Export my entries', import: 'Import', imported: n => `Imported ${n} day${n === 1 ? '' : 's'}`, importFail: 'Import failed: ',
+    signIn: 'Sign in with Google', signOut: 'Sign out', notSetup: 'Login is not set up yet (see README)', signFail: 'Sign-in failed: ', offline: 'Login unavailable offline',
+    fav: '♡ Save', faved: '♥ Saved', share: 'Share', shareSaved: 'Image saved', favorites: 'Favorite quotes', favEmpty: 'Tap ♡ on a quote to keep it here.', remove: 'Remove',
+    streak: n => `${n} day${n > 1 ? 's' : ''} in a row`, yearTitle: 'Year in review', daysWritten: n => `${n} day${n === 1 ? '' : 's'} written`, topWords: 'Your words', moodMix: 'Moods', yearEmpty: 'Nothing written this year yet.',
+    fields: {} },
+  ko: { name: '한국어', wiki: 'ko',
+    morning: '좋은 아침이에요.', afternoon: '좋은 오후예요.', evening: '좋은 저녁이에요.', late: '아직 안 잤어요?', sub: '오늘 곱씹어 볼 한 마디.',
+    another: '↻ 다른 문장', back: '← 오늘의 문장', copy: '복사', copied: '복사했어요', copyFail: '복사하지 못했어요',
+    thoughtLabel: '오늘의 문장에 대한 내 생각', thoughtPh: '이 문장을 보니 떠오르는 건…',
+    otd: '역사 속 오늘', highlights: '주요 사건', events: '사건', born: '출생', died: '사망',
+    loading: '위키백과에서 불러오는 중…', otdFail: '위키백과에 연결할 수 없어요. 인터넷을 확인하고 새로고침 해 주세요.', showMore: '더 보기',
+    yrsAgo: n => `${n}년 전`, bc: '기원전', fromEnglish: '',
+    strokes: '오늘을 몇 줄로', saved: '저장됨', howAreYou: '오늘 기분은?', wordPh: '오늘을 한 단어로',
+    oneLine: '오늘의 한 줄', diaryPh: '한 문장이면 충분해요.', threeGood: '좋았던 세 가지',
+    good1: '작은 것도 괜찮아요', good2: '맛, 소리, 사람', good3: '내가 한 일',
+    moodCal: '기분 달력', moods: ['우울', '별로', '보통', '좋음', '최고'],
+    pastTitle: '지난 해 오늘의 나', pastEmpty: '아직 아무것도 없어요. 오늘 쓴 글이 내년 오늘 여기서 기다리고 있을 거예요.',
+    yearsAgo: n => `${n}년 전`, nothing: '이 날은 기록이 없어요.', on: '문장:',
+    local: '이 기기에 저장됨', synced: '계정에 동기화됨 ✓', syncing: '동기화 중…', syncFail: '동기화 실패: ',
+    export: '기록 내보내기', import: '가져오기', imported: n => `${n}일치 기록을 가져왔어요`, importFail: '가져오기 실패: ',
+    signIn: 'Google로 로그인', signOut: '로그아웃', notSetup: '아직 로그인이 설정되지 않았어요 (README 참고)', signFail: '로그인 실패: ', offline: '오프라인에서는 로그인할 수 없어요',
+    fav: '♡ 저장', faved: '♥ 저장됨', share: '공유', shareSaved: '이미지를 저장했어요', favorites: '좋아하는 문장', favEmpty: '문장의 ♡를 누르면 여기에 모여요.', remove: '삭제',
+    streak: n => `${n}일 연속`, yearTitle: '한 해 돌아보기', daysWritten: n => `${n}일 기록`, topWords: '나의 단어들', moodMix: '기분', yearEmpty: '올해는 아직 기록이 없어요.',
+    fields: { philosophy: '철학', science: '과학', math: '수학', technology: '기술', literature: '문학', poetry: '시', art: '미술', music: '음악', film: '영화', history: '역사', psychology: '심리학', economics: '경제', sports: '스포츠', activism: '사회운동', design: '디자인' } },
+  ja: { name: '日本語', wiki: 'ja',
+    morning: 'おはようございます。', afternoon: 'こんにちは。', evening: 'こんばんは。', late: 'まだ起きてる?', sub: '今日、思いを巡らせる一言。',
+    another: '↻ 別の言葉', back: '← 今日の言葉', copy: 'コピー', copied: 'コピーしました', copyFail: 'コピーできませんでした',
+    thoughtLabel: '今日の言葉についての考え', thoughtPh: 'この言葉で思い出すのは…',
+    otd: '今日は何の日', highlights: 'ハイライト', events: '出来事', born: '誕生', died: '死去',
+    loading: 'Wikipediaから読み込み中…', otdFail: 'Wikipediaに接続できません。接続を確認して再読み込みしてください。', showMore: 'もっと見る',
+    yrsAgo: n => `${n}年前`, bc: '紀元前', fromEnglish: '',
+    strokes: '今日をひとことで', saved: '保存しました', howAreYou: '今日の気分は?', wordPh: '今日を一語で',
+    oneLine: '今日の一行', diaryPh: '一文で十分です。', threeGood: '良かったこと3つ',
+    good1: '小さなことでも', good2: '味、音、人', good3: '自分がしたこと',
+    moodCal: '気分カレンダー', moods: ['落ち込み', 'いまいち', 'ふつう', '良い', '最高'],
+    pastTitle: '過去の今日の自分', pastEmpty: 'まだ何もありません。今日書いたことが、来年の今日ここで待っています。',
+    yearsAgo: n => `${n}年前`, nothing: 'この日の記録はありません。', on: '言葉:',
+    local: 'この端末に保存', synced: 'アカウントに同期済み ✓', syncing: '同期中…', syncFail: '同期に失敗: ',
+    export: '記録を書き出す', import: '読み込む', imported: n => `${n}日分を読み込みました`, importFail: '読み込みに失敗: ',
+    signIn: 'Googleでログイン', signOut: 'ログアウト', notSetup: 'ログインはまだ設定されていません (README参照)', signFail: 'ログイン失敗: ', offline: 'オフラインではログインできません',
+    fav: '♡ 保存', faved: '♥ 保存済み', share: 'シェア', shareSaved: '画像を保存しました', favorites: 'お気に入りの言葉', favEmpty: '言葉の♡を押すとここに集まります。', remove: '削除',
+    streak: n => `${n}日連続`, yearTitle: '1年のふりかえり', daysWritten: n => `${n}日記録`, topWords: 'わたしの言葉', moodMix: '気分', yearEmpty: '今年はまだ記録がありません。',
+    fields: { philosophy: '哲学', science: '科学', math: '数学', technology: '技術', literature: '文学', poetry: '詩', art: '美術', music: '音楽', film: '映画', history: '歴史', psychology: '心理学', economics: '経済', sports: 'スポーツ', activism: '社会運動', design: 'デザイン' } },
+  zh: { name: '中文', wiki: 'zh',
+    morning: '早上好。', afternoon: '下午好。', evening: '晚上好。', late: '还没睡吗?', sub: '今天值得思考的一句话。',
+    another: '↻ 换一句', back: '← 今日一句', copy: '复制', copied: '已复制', copyFail: '无法复制',
+    thoughtLabel: '我对今日一句的想法', thoughtPh: '它让我想到…',
+    otd: '历史上的今天', highlights: '精选', events: '事件', born: '出生', died: '逝世',
+    loading: '正在从维基百科加载…', otdFail: '无法连接维基百科,请检查网络后刷新。', showMore: '显示更多',
+    yrsAgo: n => `${n}年前`, bc: '前', fromEnglish: '',
+    strokes: '用几笔记下今天', saved: '已保存', howAreYou: '今天心情如何?', wordPh: '用一个词形容今天',
+    oneLine: '今天的一句话', diaryPh: '一句话就够了。', threeGood: '三件好事',
+    good1: '小事也算', good2: '一种味道、声音或一个人', good3: '你做过的事',
+    moodCal: '心情日历', moods: ['低落', '一般般', '还行', '不错', '很棒'],
+    pastTitle: '往年今日的你', pastEmpty: '这里还没有内容。你今天写下的话,明年的今天会在这里等你。',
+    yearsAgo: n => `${n}年前`, nothing: '这一天没有记录。', on: '关于:',
+    local: '已保存在本设备', synced: '已同步到账户 ✓', syncing: '同步中…', syncFail: '同步失败: ',
+    export: '导出我的记录', import: '导入', imported: n => `已导入 ${n} 天的记录`, importFail: '导入失败: ',
+    signIn: '使用 Google 登录', signOut: '退出登录', notSetup: '尚未设置登录 (见 README)', signFail: '登录失败: ', offline: '离线时无法登录',
+    fav: '♡ 收藏', faved: '♥ 已收藏', share: '分享', shareSaved: '图片已保存', favorites: '收藏的句子', favEmpty: '点击句子上的 ♡ 即可收藏到这里。', remove: '删除',
+    streak: n => `连续 ${n} 天`, yearTitle: '年度回顾', daysWritten: n => `记录了 ${n} 天`, topWords: '我的词语', moodMix: '心情', yearEmpty: '今年还没有记录。',
+    fields: { philosophy: '哲学', science: '科学', math: '数学', technology: '技术', literature: '文学', poetry: '诗歌', art: '艺术', music: '音乐', film: '电影', history: '历史', psychology: '心理学', economics: '经济', sports: '体育', activism: '社会运动', design: '设计' } },
+  es: { name: 'Español', wiki: 'es',
+    morning: 'Buenos días.', afternoon: 'Buenas tardes.', evening: 'Buenas noches.', late: '¿Sigues despierto?', sub: 'Algo para reflexionar hoy.',
+    another: '↻ Otra', back: '← La cita de hoy', copy: 'Copiar', copied: 'Copiado', copyFail: 'No se pudo copiar',
+    thoughtLabel: 'Tu reflexión sobre la cita de hoy', thoughtPh: 'Me hace pensar en…',
+    otd: 'Tal día como hoy', highlights: 'Destacados', events: 'Hechos', born: 'Nacimientos', died: 'Fallecimientos',
+    loading: 'Cargando desde Wikipedia…', otdFail: 'No se pudo conectar con Wikipedia. Revisa tu conexión y recarga.', showMore: 'Ver más',
+    yrsAgo: n => `hace ${n} años`, bc: 'a. C.', fromEnglish: '',
+    strokes: 'Hoy, en pocas líneas', saved: 'Guardado', howAreYou: '¿Cómo estás?', wordPh: 'Hoy en una palabra',
+    oneLine: 'Una línea sobre hoy', diaryPh: 'Basta con una frase.', threeGood: 'Tres cosas buenas',
+    good1: 'Lo pequeño también cuenta', good2: 'Un sabor, un sonido, una persona', good3: 'Algo que hiciste',
+    moodCal: 'Calendario de ánimo', moods: ['Bajo', 'Regular', 'Normal', 'Bien', 'Genial'],
+    pastTitle: 'Tú, en este día', pastEmpty: 'Aún no hay nada. Lo que escribas hoy te esperará aquí en esta fecha el año que viene.',
+    yearsAgo: n => `hace ${n} año${n > 1 ? 's' : ''}`, nothing: 'No escribiste nada este día.', on: 'sobre',
+    local: 'Guardado en este dispositivo', synced: 'Sincronizado con tu cuenta ✓', syncing: 'Sincronizando…', syncFail: 'Error al sincronizar: ',
+    export: 'Exportar mis entradas', import: 'Importar', imported: n => `${n} día${n === 1 ? '' : 's'} importado${n === 1 ? '' : 's'}`, importFail: 'Error al importar: ',
+    signIn: 'Iniciar sesión con Google', signOut: 'Cerrar sesión', notSetup: 'El inicio de sesión aún no está configurado (ver README)', signFail: 'Error al iniciar sesión: ', offline: 'Sin conexión no se puede iniciar sesión',
+    fav: '♡ Guardar', faved: '♥ Guardada', share: 'Compartir', shareSaved: 'Imagen guardada', favorites: 'Citas favoritas', favEmpty: 'Toca ♡ en una cita para guardarla aquí.', remove: 'Quitar',
+    streak: n => `${n} día${n > 1 ? 's' : ''} seguido${n > 1 ? 's' : ''}`, yearTitle: 'Tu año', daysWritten: n => `${n} día${n === 1 ? '' : 's'} escrito${n === 1 ? '' : 's'}`, topWords: 'Tus palabras', moodMix: 'Ánimo', yearEmpty: 'Aún no has escrito nada este año.',
+    fields: { philosophy: 'filosofía', science: 'ciencia', math: 'matemáticas', technology: 'tecnología', literature: 'literatura', poetry: 'poesía', art: 'arte', music: 'música', film: 'cine', history: 'historia', psychology: 'psicología', economics: 'economía', sports: 'deporte', activism: 'activismo', design: 'diseño' } },
+  fr: { name: 'Français', wiki: 'fr',
+    morning: 'Bonjour.', afternoon: 'Bon après-midi.', evening: 'Bonsoir.', late: 'Encore debout ?', sub: 'Une pensée à méditer aujourd’hui.',
+    another: '↻ Une autre', back: '← La citation du jour', copy: 'Copier', copied: 'Copié', copyFail: 'Copie impossible',
+    thoughtLabel: 'Ta réflexion sur la citation du jour', thoughtPh: 'Cela me fait penser à…',
+    otd: 'Ce jour-là', highlights: 'À la une', events: 'Événements', born: 'Naissances', died: 'Décès',
+    loading: 'Chargement depuis Wikipédia…', otdFail: 'Impossible de joindre Wikipédia — vérifie ta connexion et recharge.', showMore: 'Voir plus',
+    yrsAgo: n => `il y a ${n} ans`, bc: 'av. J.-C.', fromEnglish: '',
+    strokes: 'Aujourd’hui, en quelques traits', saved: 'Enregistré', howAreYou: 'Comment ça va ?', wordPh: 'Aujourd’hui en un mot',
+    oneLine: 'Une ligne sur aujourd’hui', diaryPh: 'Une phrase suffit.', threeGood: 'Trois bonnes choses',
+    good1: 'Même une petite chose', good2: 'Un goût, un son, une personne', good3: 'Quelque chose que tu as fait',
+    moodCal: 'Calendrier d’humeur', moods: ['Bas', 'Bof', 'Ça va', 'Bien', 'Super'],
+    pastTitle: 'Toi, ce jour-là', pastEmpty: 'Rien pour l’instant. Ce que tu écris aujourd’hui t’attendra ici à la même date l’an prochain.',
+    yearsAgo: n => `il y a ${n} an${n > 1 ? 's' : ''}`, nothing: 'Rien d’écrit ce jour-là.', on: 'sur',
+    local: 'Enregistré sur cet appareil', synced: 'Synchronisé avec ton compte ✓', syncing: 'Synchronisation…', syncFail: 'Échec de la synchronisation : ',
+    export: 'Exporter mes notes', import: 'Importer', imported: n => `${n} jour${n > 1 ? 's' : ''} importé${n > 1 ? 's' : ''}`, importFail: 'Échec de l’import : ',
+    signIn: 'Se connecter avec Google', signOut: 'Se déconnecter', notSetup: 'Connexion pas encore configurée (voir README)', signFail: 'Échec de la connexion : ', offline: 'Connexion impossible hors ligne',
+    fav: '♡ Garder', faved: '♥ Gardée', share: 'Partager', shareSaved: 'Image enregistrée', favorites: 'Citations favorites', favEmpty: 'Touche ♡ sur une citation pour la garder ici.', remove: 'Retirer',
+    streak: n => `${n} jour${n > 1 ? 's' : ''} d’affilée`, yearTitle: 'Ton année', daysWritten: n => `${n} jour${n > 1 ? 's' : ''} écrit${n > 1 ? 's' : ''}`, topWords: 'Tes mots', moodMix: 'Humeurs', yearEmpty: 'Rien d’écrit cette année pour l’instant.',
+    fields: { philosophy: 'philosophie', science: 'science', math: 'mathématiques', technology: 'technologie', literature: 'littérature', poetry: 'poésie', art: 'art', music: 'musique', film: 'cinéma', history: 'histoire', psychology: 'psychologie', economics: 'économie', sports: 'sport', activism: 'militantisme', design: 'design' } },
+  de: { name: 'Deutsch', wiki: 'de',
+    morning: 'Guten Morgen.', afternoon: 'Guten Tag.', evening: 'Guten Abend.', late: 'Noch wach?', sub: 'Etwas zum Nachdenken für heute.',
+    another: '↻ Noch eins', back: '← Zitat des Tages', copy: 'Kopieren', copied: 'Kopiert', copyFail: 'Kopieren fehlgeschlagen',
+    thoughtLabel: 'Dein Gedanke zum heutigen Zitat', thoughtPh: 'Es erinnert mich an…',
+    otd: 'An diesem Tag', highlights: 'Highlights', events: 'Ereignisse', born: 'Geboren', died: 'Gestorben',
+    loading: 'Lade von Wikipedia…', otdFail: 'Wikipedia nicht erreichbar — Verbindung prüfen und neu laden.', showMore: 'Mehr anzeigen',
+    yrsAgo: n => `vor ${n} Jahren`, bc: 'v. Chr.', fromEnglish: '',
+    strokes: 'Heute, in ein paar Strichen', saved: 'Gespeichert', howAreYou: 'Wie geht’s dir?', wordPh: 'Heute in einem Wort',
+    oneLine: 'Eine Zeile über heute', diaryPh: 'Ein Satz reicht.', threeGood: 'Drei gute Dinge',
+    good1: 'Auch Kleines zählt', good2: 'Ein Geschmack, ein Klang, ein Mensch', good3: 'Etwas, das du getan hast',
+    moodCal: 'Stimmungskalender', moods: ['Mies', 'Naja', 'Okay', 'Gut', 'Super'],
+    pastTitle: 'Du, an diesem Tag', pastEmpty: 'Noch nichts hier. Was du heute schreibst, wartet nächstes Jahr an diesem Tag auf dich.',
+    yearsAgo: n => `vor ${n} Jahr${n > 1 ? 'en' : ''}`, nothing: 'An diesem Tag nichts geschrieben.', on: 'zu',
+    local: 'Auf diesem Gerät gespeichert', synced: 'Mit deinem Konto synchronisiert ✓', syncing: 'Synchronisiere…', syncFail: 'Synchronisierung fehlgeschlagen: ',
+    export: 'Einträge exportieren', import: 'Importieren', imported: n => `${n} Tag${n === 1 ? '' : 'e'} importiert`, importFail: 'Import fehlgeschlagen: ',
+    signIn: 'Mit Google anmelden', signOut: 'Abmelden', notSetup: 'Anmeldung noch nicht eingerichtet (siehe README)', signFail: 'Anmeldung fehlgeschlagen: ', offline: 'Offline keine Anmeldung möglich',
+    fav: '♡ Merken', faved: '♥ Gemerkt', share: 'Teilen', shareSaved: 'Bild gespeichert', favorites: 'Lieblingszitate', favEmpty: 'Tippe ♡ bei einem Zitat, um es hier zu sammeln.', remove: 'Entfernen',
+    streak: n => `${n} Tag${n > 1 ? 'e' : ''} in Folge`, yearTitle: 'Dein Jahr', daysWritten: n => `${n} Tag${n === 1 ? '' : 'e'} geschrieben`, topWords: 'Deine Wörter', moodMix: 'Stimmungen', yearEmpty: 'Dieses Jahr noch nichts geschrieben.',
+    fields: { philosophy: 'Philosophie', science: 'Wissenschaft', math: 'Mathematik', technology: 'Technik', literature: 'Literatur', poetry: 'Lyrik', art: 'Kunst', music: 'Musik', film: 'Film', history: 'Geschichte', psychology: 'Psychologie', economics: 'Wirtschaft', sports: 'Sport', activism: 'Aktivismus', design: 'Design' } },
+};
+// strings added in v5 (theme, today's read, extra fields)
+const MORE = {
+  en: { theme: { auto: 'Theme: follows your system', light: 'Theme: light', dark: 'Theme: dark' }, todaysRead: 'Today’s read', anotherRead: '↻ Another one', lookUp: 'Look it up ↗', book: 'Book', paper: 'Paper', fields: {} },
+  ko: { theme: { auto: '테마: 시스템 설정 따름', light: '테마: 밝게', dark: '테마: 어둡게' }, todaysRead: '오늘의 읽을거리', anotherRead: '↻ 다른 추천', lookUp: '찾아보기 ↗', book: '책', paper: '논문', fields: { 'computer science': '컴퓨터 과학', physics: '물리학', biology: '생물학', essay: '에세이' } },
+  ja: { theme: { auto: 'テーマ: システムに合わせる', light: 'テーマ: ライト', dark: 'テーマ: ダーク' }, todaysRead: '今日の読みもの', anotherRead: '↻ 別のおすすめ', lookUp: '調べる ↗', book: '本', paper: '論文', fields: { 'computer science': 'コンピュータ科学', physics: '物理学', biology: '生物学', essay: 'エッセイ' } },
+  zh: { theme: { auto: '主题：跟随系统', light: '主题：浅色', dark: '主题：深色' }, todaysRead: '今日阅读', anotherRead: '↻ 换一个', lookUp: '查一查 ↗', book: '书', paper: '论文', fields: { 'computer science': '计算机科学', physics: '物理学', biology: '生物学', essay: '随笔' } },
+  es: { theme: { auto: 'Tema: según el sistema', light: 'Tema: claro', dark: 'Tema: oscuro' }, todaysRead: 'Lectura de hoy', anotherRead: '↻ Otra', lookUp: 'Buscar ↗', book: 'Libro', paper: 'Artículo', fields: { 'computer science': 'informática', physics: 'física', biology: 'biología', essay: 'ensayo' } },
+  fr: { theme: { auto: 'Thème : comme le système', light: 'Thème : clair', dark: 'Thème : sombre' }, todaysRead: 'Lecture du jour', anotherRead: '↻ Une autre', lookUp: 'Rechercher ↗', book: 'Livre', paper: 'Article', fields: { 'computer science': 'informatique', physics: 'physique', biology: 'biologie', essay: 'essai' } },
+  de: { theme: { auto: 'Design: wie System', light: 'Design: hell', dark: 'Design: dunkel' }, todaysRead: 'Lektüre des Tages', anotherRead: '↻ Noch eins', lookUp: 'Nachschlagen ↗', book: 'Buch', paper: 'Aufsatz', fields: { 'computer science': 'Informatik', physics: 'Physik', biology: 'Biologie', essay: 'Essay' } },
+};
+for (const [k, more] of Object.entries(MORE)) Object.assign(I18N[k], more, { fields: { ...I18N[k].fields, ...more.fields } });
+
+const pickLang = () => {
+  try { const s = localStorage.getItem('ponder.lang'); if (I18N[s]) return s; } catch {}
+  const nav = (navigator.language || 'en').slice(0, 2);
+  return I18N[nav] ? nav : 'en';
+};
+let LANG = pickLang();
+let T = I18N[LANG];
+
+const $ = s => document.querySelector(s);
+const pad = n => String(n).padStart(2, '0');
+const keyOf = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+const parseKey = k => { const [y, m, d] = k.split('-').map(Number); return new Date(y, m - 1, d); };
+const el = (tag, props = {}, ...kids) => { const n = Object.assign(document.createElement(tag), props); n.append(...kids); return n; };
+
+// ?date=YYYY-MM-DD lets you preview another day (handy for testing)
+const override = new URLSearchParams(location.search).get('date');
+const NOW = override && /^\d{4}-\d{2}-\d{2}$/.test(override) ? parseKey(override) : new Date();
+const TODAY = keyOf(NOW);
+
+const MOODS = [
+  { e: '😔', c: '#8ea6ff' },
+  { e: '😕', c: '#b9a9ff' },
+  { e: '😐', c: '#cfc8dc' },
+  { e: '🙂', c: '#ffd08a' },
+  { e: '😄', c: '#ff9fb6' },
+];
+
+// Quotes are referred to by a short hash of their text, so editing quotes.js never breaks saved favorites/thoughts.
+const qid = q => { let h = 5381; for (const ch of q.q) h = (h * 33 + ch.codePointAt(0)) >>> 0; return h.toString(36); };
+const QBYID = new Map(QUOTES.map((q, i) => [qid(q), i]));
+const quoteOf = id => QUOTES[typeof id === 'number' ? id : QBYID.get(id)];
+
+/* ---------------- storage ---------------- */
+const LS = 'ponder.entries.v1', FAV = 'ponder.favs.v1';
+let entries = {};
+try { entries = JSON.parse(localStorage.getItem(LS)) || {}; } catch { entries = {}; }
+let favs = { ids: [], updated: 0 };
+try { favs = JSON.parse(localStorage.getItem(FAV)) || favs; } catch {}
+const persist = () => { try { localStorage.setItem(LS, JSON.stringify(entries)); } catch {} };
+const persistFavs = () => { try { localStorage.setItem(FAV, JSON.stringify(favs)); } catch {} };
+const isEmpty = e => !e || !(e.mood || e.word || e.diary || e.thought || (e.good || []).some(Boolean));
+
+function setField(field, value) {
+  const e = entries[TODAY] ||= {};
+  e[field] = value;
+  if (field === 'thought') e.tq = qid(QUOTES[dailyIndex]);
+  e.updated = Date.now();
+  persist();
+  cloud.save(TODAY);
+  renderCalendar(); renderDetail(); renderYear();
+  // the streak pill briefly says "✓ Saved", then goes back to the streak
+  const s = $('#streak');
+  s.hidden = false; s.classList.add('flash'); s.textContent = '✓ ' + T.saved;
+  clearTimeout(setField.t); setField.t = setTimeout(() => { s.classList.remove('flash'); renderStreak(); }, 1200);
+}
+const debounce = (fn, ms = 400) => { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; };
+
+function toast(msg) {
+  const t = $('#toast'); t.textContent = msg; t.classList.add('on');
+  clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove('on'), 2200);
+}
+
+/* ---------------- static text ---------------- */
+let status = 'local';
+const setStatus = (key, extra = '') => { status = key; $('#status').textContent = T[key] + extra; };
+function applyLang() {
+  document.documentElement.lang = LANG;
+  document.querySelectorAll('[data-t]').forEach(n => { n.textContent = T[n.dataset.t]; });
+  document.querySelectorAll('[data-ph]').forEach(n => { n.placeholder = T[n.dataset.ph]; });
+  $('#today').textContent = NOW.toLocaleDateString(LANG, { weekday: 'long', month: 'long', day: 'numeric' });
+  const h = new Date().getHours();
+  $('#greet').textContent = (h < 5 ? T.late : h < 12 ? T.morning : h < 18 ? T.afternoon : T.evening) + ' ' + T.sub;
+  $('#otdDate').textContent = NOW.toLocaleDateString(LANG, { month: 'short', day: 'numeric' });
+  [...$('#moods').children].forEach((b, i) => { b.title = b.ariaLabel = T.moods[i]; });
+  $('#legend').replaceChildren(...MOODS.map((m, i) => el('span', {}, m.e + ' ' + T.moods[i])));
+  $('#qField').textContent = T.fields[QUOTES[shown].f] || QUOTES[shown].f;
+  $('#status').textContent = T[status] || T.local;
+  renderFavBtn(); renderTheme(); renderRead(false);
+}
+const langSel = $('#lang');
+for (const [code, l] of Object.entries(I18N)) langSel.append(el('option', { value: code, textContent: l.name }));
+langSel.value = LANG;
+langSel.onchange = () => {
+  LANG = langSel.value; T = I18N[LANG];
+  try { localStorage.setItem('ponder.lang', LANG); } catch {}
+  applyLang(); renderAll(); renderAuth(); loadHistory();
+};
+
+/* ---------------- quote ---------------- */
+const dayNum = Math.floor(Date.UTC(NOW.getFullYear(), NOW.getMonth(), NOW.getDate()) / 864e5);
+const dailyIndex = (dayNum * 7919) % QUOTES.length;
+let shown = dailyIndex;
+
+function showQuote(i, animate = true) {
+  const q = QUOTES[i];
+  const box = $('#quoteBox');
+  const apply = () => {
+    $('#qField').textContent = T.fields[q.f] || q.f;
+    $('#qText').textContent = q.q;
+    $('#qAuthor').textContent = q.a;
+    $('#qSource').textContent = q.s ? ', ' + q.s : '';
+    $('#qBack').hidden = i === dailyIndex;
+    renderFavBtn();
+    box.classList.remove('out');
+  };
+  if (!animate) return apply();
+  box.classList.add('out'); setTimeout(apply, 300);
+}
+$('#qNext').onclick = () => { let n; do { n = Math.floor(Math.random() * QUOTES.length); } while (n === shown); shown = n; showQuote(n); };
+$('#qBack').onclick = () => { shown = dailyIndex; showQuote(dailyIndex); };
+$('#qCopy').onclick = async () => {
+  const q = QUOTES[shown];
+  try { await navigator.clipboard.writeText(`“${q.q}” — ${q.a}${q.s ? ', ' + q.s : ''}`); toast(T.copied); } catch { toast(T.copyFail); }
+};
+
+/* ---------------- favorites ---------------- */
+function renderFavBtn() {
+  const on = favs.ids.includes(qid(QUOTES[shown]));
+  const b = $('#qFav'); b.textContent = on ? T.faved : T.fav; b.setAttribute('aria-pressed', on);
+}
+function setFavs(ids) {
+  favs = { ids, updated: Date.now() };
+  persistFavs(); cloud.saveFavs(); renderFavBtn(); renderFavs();
+}
+$('#qFav').onclick = () => {
+  const id = qid(QUOTES[shown]);
+  setFavs(favs.ids.includes(id) ? favs.ids.filter(x => x !== id) : [id, ...favs.ids]);
+};
+function renderFavs() {
+  const list = favs.ids.map(id => [id, quoteOf(id)]).filter(([, q]) => q);
+  $('#favCount').textContent = list.length ? '♥ ' + list.length : '';
+  const box = $('#favs');
+  if (!list.length) return box.replaceChildren(el('p', { className: 'empty-note', textContent: T.favEmpty }));
+  box.replaceChildren(...list.map(([id, q]) => el('div', { className: 'fav' },
+    el('div', {},
+      el('div', { className: 't', textContent: `“${q.q}”`, lang: 'en', onclick: () => { shown = QBYID.get(id); showQuote(shown); window.scrollTo({ top: 0, behavior: 'smooth' }); } }),
+      el('div', { className: 'a', textContent: '— ' + q.a })),
+    el('button', { textContent: '✕', title: T.remove, ariaLabel: T.remove, onclick: () => setFavs(favs.ids.filter(x => x !== id)) }))));
+}
+
+/* ---------------- share card ---------------- */
+// Draws the quote onto a 1080×1350 image with the same soft colors, then shares it (phone) or downloads it (PC).
+$('#qShare').onclick = async () => {
+  const q = QUOTES[shown];
+  try { await Promise.all([document.fonts.load('400 60px Fraunces'), document.fonts.load('600 30px Inter')]); } catch {}
+  const W = 1080, H = 1350, c = el('canvas', { width: W, height: H }), x = c.getContext('2d');
+  x.fillStyle = '#f3ede8'; x.fillRect(0, 0, W, H);
+  for (const [bx, by, col] of [[160, 220, '#ffb3c7'], [960, 260, '#a9b6ff'], [220, 1180, '#9fe6d6'], [900, 1120, '#ffd9a3']]) {
+    const g = x.createRadialGradient(bx, by, 0, bx, by, 760); g.addColorStop(0, col); g.addColorStop(1, col + '00');
+    x.fillStyle = g; x.fillRect(0, 0, W, H);
+  }
+  x.fillStyle = 'rgba(255,255,255,.55)'; x.beginPath(); x.roundRect(80, 80, W - 160, H - 160, 56); x.fill();
+  const wrap = (text, max) => {
+    const lines = []; let line = '';
+    for (const w of text.split(' ')) { const t = line ? line + ' ' + w : w; if (x.measureText(t).width > max && line) { lines.push(line); line = w; } else line = t; }
+    return [...lines, line];
+  };
+  let size = 72, lines;
+  do { x.font = `400 ${size}px Fraunces, Georgia, serif`; lines = wrap(`“${q.q}”`, W - 300); size -= 4; } while (lines.length * size * 1.4 > 720 && size > 30);
+  size += 4;
+  const lh = size * 1.4, top = (H - lines.length * lh - 140) / 2 + size;
+  x.fillStyle = '#221c33'; x.textBaseline = 'alphabetic';
+  lines.forEach((l, i) => x.fillText(l, 150, top + i * lh));
+  let y = top + lines.length * lh + 40;
+  x.font = '600 34px Inter, sans-serif'; x.fillText('— ' + q.a, 150, y);
+  if (q.s) { x.font = '400 26px Inter, sans-serif'; x.fillStyle = '#6e6784'; wrap(q.s, W - 300).slice(0, 2).forEach((l, i) => x.fillText(l, 150, y + 44 + i * 34)); }
+  x.font = '600 22px Inter, sans-serif'; x.fillStyle = '#6e6784'; x.fillText('DAILY PONDER', 150, H - 140);
+  const blob = await new Promise(r => c.toBlob(r, 'image/png'));
+  const file = new File([blob], 'daily-ponder-quote.png', { type: 'image/png' });
+  if (navigator.canShare?.({ files: [file] })) {
+    try { await navigator.share({ files: [file], text: `“${q.q}” — ${q.a}` }); return; }
+    catch (err) { if (err.name === 'AbortError') return; }
+  }
+  const a = el('a', { href: URL.createObjectURL(blob), download: file.name });
+  a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  toast(T.shareSaved);
+};
+
+/* ---------------- scribbles ---------------- */
+const moodBox = $('#moods');
+MOODS.forEach((m, i) => moodBox.append(el('button', { textContent: m.e, onclick: () => {
+  const cur = entries[TODAY]?.mood;
+  setField('mood', cur === i + 1 ? 0 : i + 1);
+  fillToday();
+} })));
+
+const saveWord = debounce(v => setField('word', v));
+const saveDiary = debounce(v => setField('diary', v));
+const saveThought = debounce(v => setField('thought', v));
+$('#word').oninput = e => saveWord(e.target.value.trim());
+$('#diary').oninput = e => saveDiary(e.target.value.trim());
+$('#thought').oninput = e => saveThought(e.target.value.trim());
+const saveGood = debounce(() => setField('good', [...document.querySelectorAll('[data-good]')].map(i => i.value.trim())));
+document.querySelectorAll('[data-good]').forEach(i => i.oninput = saveGood);
+
+function fillToday() {
+  const e = entries[TODAY] || {};
+  [...moodBox.children].forEach((b, i) => b.setAttribute('aria-pressed', e.mood === i + 1));
+  const set = (sel, v) => { const n = $(sel); if (document.activeElement !== n) n.value = v || ''; };
+  set('#word', e.word); set('#diary', e.diary); set('#thought', e.thought);
+  document.querySelectorAll('[data-good]').forEach(i => { if (document.activeElement !== i) i.value = (e.good || [])[i.dataset.good] || ''; });
+}
+
+/* ---------------- streak ---------------- */
+// Days in a row with something written. If today is still blank, count up to yesterday so the morning never shows 0.
+function renderStreak() {
+  const d = new Date(NOW);
+  if (isEmpty(entries[keyOf(d)])) d.setDate(d.getDate() - 1);
+  let n = 0;
+  while (!isEmpty(entries[keyOf(d)])) { n++; d.setDate(d.getDate() - 1); }
+  const s = $('#streak');
+  if (s.classList.contains('flash')) return;
+  s.hidden = n < 1; s.textContent = '🔥 ' + T.streak(n);
+}
+
+/* ---------------- entry card (used by calendar + past years) ---------------- */
+function entryCard(k, heading) {
+  const e = entries[k];
+  const card = el('div', { className: 'entry' }, el('div', { className: 'when', textContent: heading }));
+  if (isEmpty(e)) { card.append(el('p', { className: 'empty-note', textContent: T.nothing })); return card; }
+  const mood = e.mood ? MOODS[e.mood - 1].e + ' ' : '';
+  if (mood || e.word) card.append(el('p', {}, mood, el('b', { textContent: e.word || '' })));
+  if (e.diary) card.append(el('p', { textContent: e.diary }));
+  const good = (e.good || []).filter(Boolean);
+  if (good.length) card.append(el('ul', {}, ...good.map(g => el('li', { textContent: g }))));
+  if (e.thought) {
+    const q = quoteOf(e.tq);
+    card.append(el('p', { textContent: '💭 ' + e.thought }));
+    if (q) card.append(el('p', { className: 'q', textContent: `${T.on} “${q.q.length > 110 ? q.q.slice(0, 110) + '…' : q.q}” — ${q.a}` }));
+  }
+  return card;
+}
+
+/* ---------------- you, on this day ---------------- */
+function renderPast() {
+  const md = TODAY.slice(5);
+  const past = Object.keys(entries).filter(k => k.slice(5) === md && k < TODAY && !isEmpty(entries[k])).sort().reverse();
+  const box = $('#pastYou'); box.replaceChildren();
+  if (!past.length) { box.append(el('p', { className: 'empty-note', textContent: T.pastEmpty })); return; }
+  past.forEach(k => box.append(entryCard(k, `${k.slice(0, 4)} · ${T.yearsAgo(NOW.getFullYear() - Number(k.slice(0, 4)))}`)));
+}
+
+/* ---------------- mood calendar ---------------- */
+let calMonth = new Date(NOW.getFullYear(), NOW.getMonth(), 1);
+let selected = null;
+function renderCalendar() {
+  $('#calTitle').textContent = calMonth.toLocaleDateString(LANG, { month: 'long', year: 'numeric' });
+  // weekday initials in the current language, Monday first (2024-01-01 was a Monday)
+  const wd = [...Array(7)].map((_, i) => new Date(2024, 0, 1 + i).toLocaleDateString(LANG, { weekday: 'narrow' }));
+  const cal = $('#cal'); cal.replaceChildren(...wd.map(d => el('div', { className: 'wd', textContent: d })));
+  const first = (calMonth.getDay() + 6) % 7;
+  for (let i = 0; i < first; i++) cal.append(el('div', { className: 'day empty' }));
+  const days = new Date(calMonth.getFullYear(), calMonth.getMonth() + 1, 0).getDate();
+  for (let d = 1; d <= days; d++) {
+    const k = keyOf(new Date(calMonth.getFullYear(), calMonth.getMonth(), d));
+    const e = entries[k];
+    const b = el('button', { className: 'day', title: k });
+    if (e?.mood) b.style.background = `color-mix(in srgb, ${MOODS[e.mood - 1].c} 55%, transparent)`;
+    if (!isEmpty(e)) b.classList.add('has');
+    if (k === TODAY) b.classList.add('is-today');
+    if (k === selected) b.classList.add('sel');
+    b.append(el('span', { className: 'e', textContent: e?.mood ? MOODS[e.mood - 1].e : '' }), el('span', { textContent: d }));
+    b.onclick = () => { selected = selected === k ? null : k; renderCalendar(); renderDetail(); };
+    cal.append(b);
+  }
+}
+function renderDetail() {
+  const box = $('#dayDetail'); box.replaceChildren();
+  if (selected) box.append(entryCard(selected, parseKey(selected).toLocaleDateString(LANG, { weekday: 'short', month: 'long', day: 'numeric', year: 'numeric' })));
+}
+$('#calPrev').onclick = () => { calMonth.setMonth(calMonth.getMonth() - 1); renderCalendar(); };
+$('#calNext').onclick = () => { calMonth.setMonth(calMonth.getMonth() + 1); renderCalendar(); };
+
+/* ---------------- year in review ---------------- */
+let year = NOW.getFullYear(), yrSel = null;
+function renderYear() {
+  $('#yrTitle').textContent = year;
+  const grid = $('#year'); grid.replaceChildren();
+  const moodCount = [0, 0, 0, 0, 0], words = new Map();
+  let written = 0;
+  for (let m = 0; m < 12; m++) {
+    grid.append(el('span', { className: 'm', textContent: new Date(year, m, 1).toLocaleDateString(LANG, { month: 'narrow' }) }));
+    const days = new Date(year, m + 1, 0).getDate();
+    for (let d = 1; d <= 31; d++) {
+      const c = el('span', { className: 'c' });
+      if (d > days) { c.classList.add('x'); grid.append(c); continue; }
+      const k = keyOf(new Date(year, m, d)), e = entries[k];
+      c.title = k;
+      if (k === TODAY) c.classList.add('is-today');
+      if (!isEmpty(e)) {
+        written++;
+        if (e.mood) { c.style.background = MOODS[e.mood - 1].c; moodCount[e.mood - 1]++; } else c.classList.add('w');
+        if (e.word) { const w = e.word.toLowerCase(); words.set(w, (words.get(w) || 0) + 1); }
+        c.title = `${k}${e.mood ? ' ' + MOODS[e.mood - 1].e : ''}${e.word ? ' ' + e.word : ''}`;
+      }
+      if (k === yrSel) c.classList.add('sel');
+      // click a day to read it (read-only); click again to close
+      c.onclick = () => { yrSel = yrSel === k ? null : k; renderYear(); };
+      grid.append(c);
+    }
+  }
+  $('#yrDetail').replaceChildren(...(yrSel ? [entryCard(yrSel, parseKey(yrSel).toLocaleDateString(LANG, { weekday: 'short', month: 'long', day: 'numeric', year: 'numeric' }))] : []));
+  const stats = $('#yrStats'); stats.replaceChildren();
+  if (!written) return stats.append(el('p', { className: 'empty-note', textContent: T.yearEmpty }));
+  stats.append(el('div', { className: 'big', textContent: T.daysWritten(written) }));
+  const moodTotal = moodCount.reduce((a, b) => a + b, 0);
+  if (moodTotal) stats.append(el('div', {},
+    el('div', { className: 'label', textContent: T.moodMix + ' · ' + moodCount.map((n, i) => n ? `${MOODS[i].e} ${n}` : '').filter(Boolean).join('  ') }),
+    el('div', { className: 'mix' }, ...moodCount.map((n, i) => { const s = el('span'); s.style.width = (n / moodTotal * 100) + '%'; s.style.background = MOODS[i].c; return s; }))));
+  const top = [...words].sort((a, b) => b[1] - a[1]).slice(0, 8);
+  if (top.length) stats.append(el('div', {},
+    el('div', { className: 'label', textContent: T.topWords }),
+    el('div', { className: 'chips' }, ...top.map(([w, n]) => el('span', { className: 'chip' }, w, n > 1 ? el('small', { textContent: '×' + n }) : '')))));
+}
+$('#yrPrev').onclick = () => { year--; renderYear(); };
+$('#yrNext').onclick = () => { year++; renderYear(); };
+
+/* ---------------- on this day (Wikipedia) ---------------- */
+const MM = pad(NOW.getMonth() + 1), DD = pad(NOW.getDate());
+let otd = null, otdTab = 'selected', otdCount = 8;
+const slim = list => (list || []).map(x => ({
+  y: x.year, t: x.text, u: x.pages?.[0]?.content_urls?.desktop?.page || '',
+})).sort((a, b) => b.y - a.y);
+
+// Korean and Japanese Wikipedia have no "On this day" feed, but every date has its own page
+// ("10월 25일", "10月25日") with plain list sections — read those instead.
+const DATE_PAGES = {
+  ko: { title: (m, d) => `${m}월 ${d}일`, secs: { '사건': ['selected', 'events'], '문화': ['events'], '탄생': ['births'], '사망': ['deaths'] } },
+  ja: { title: (m, d) => `${m}月${d}日`, secs: { 'できごと': ['selected', 'events'], '誕生日': ['births'], '忌日': ['deaths'] } },
+};
+const cleanWiki = s => {
+  s = s.replace(/<ref[^>]*\/>|<ref[^>]*>[\s\S]*?<\/ref>/g, '').replace(/<ref[^>]*>.*$/, '')  // citations (some run onto the next line)
+    .replace(/\{\{(?:임시링크|仮リンク|lang)\|(?:[a-z-]+\|)?([^|}]+)[^}]*\}\}/g, '$1');
+  for (let prev; prev !== s;) { prev = s; s = s.replace(/\{\{[^{}]*\}\}/g, ''); }             // nested templates, innermost first
+  return s.replace(/\{\{.*$/, '')
+  .replace(/\[\[(?:[^\]|]*\|)?([^\]]*)\]\]/g, '$1')
+  .replace(/'{2,}|<[^>]+>/g, '')
+  .replace(/^\s*[-–—:]\s*/, '').trim();
+};
+function parseDatePage(wt, cfg, wiki) {
+  const out = { selected: [], events: [], births: [], deaths: [] };
+  let targets = null, year = null;
+  const push = raw => {
+    const link = [...raw.matchAll(/\[\[([^\]|#]+)/g)].map(m => m[1]).find(t => !/^(기원전\s*)?\d+\s*년$|^(紀元前)?\d+年$/.test(t));
+    const item = { y: year, t: cleanWiki(raw), u: link ? `https://${wiki}.wikipedia.org/wiki/${encodeURIComponent(link.trim().replace(/ /g, '_'))}` : '' };
+    if (item.t) targets.forEach(k => out[k].push(item));
+  };
+  for (const line of wt.split('\n')) {
+    if (/^===/.test(line)) { year = null; continue; }   // sub-sections ("=== 1600년 이전 ===") keep the current section
+    const h = line.match(/^==\s*(.+?)\s*==\s*$/);
+    if (h) { targets = cfg.secs[h[1]] || null; year = null; continue; }
+    if (!targets) continue;
+    const m = line.match(/^\*(?!\*)\s*\[\[(기원전\s*|紀元前)?(\d+)\s*[년年]\]\]\s*(?:[（(][^)）]*[)）])?\s*(.*)$/);
+    if (m) { year = (m[1] ? -1 : 1) * Number(m[2]); if (m[3].replace(/^[-–—:\s]+/, '')) push(m[3]); }
+    else if (/^\*\*/.test(line) && year !== null) push(line.replace(/^\*+\s*/, ''));
+  }
+  for (const k in out) out[k].sort((a, b) => b.y - a.y);
+  // highlights: spread evenly across time (recent years have far more entries, so pick by year, not by position)
+  const s = out.selected;
+  if (s.length > 12) {
+    const lo = s[s.length - 1].y, hi = s[0].y, used = new Set();
+    for (let i = 0; i < 12; i++) {
+      const target = lo + (hi - lo) * i / 11;
+      let best = -1;
+      s.forEach((x, j) => { if (!used.has(j) && (best < 0 || Math.abs(x.y - target) < Math.abs(s[best].y - target))) best = j; });
+      used.add(best);
+    }
+    out.selected = [...used].sort((a, b) => a - b).map(j => s[j]);
+  }
+  return out;
+}
+
+async function loadHistory() {
+  const wiki = T.wiki, ck = `ponder.otd.${wiki}.${MM}${DD}`;
+  otd = null;
+  $('#otdList').replaceChildren(el('li', {}, el('span'), el('span', { className: 'muted', textContent: T.loading })));
+  $('#otdNote').hidden = !T.fromEnglish; $('#otdNote').textContent = T.fromEnglish;
+  try {
+    const page = DATE_PAGES[wiki];
+    if (page) {
+      const title = page.title(NOW.getMonth() + 1, NOW.getDate());
+      const r = await fetch(`https://${wiki}.wikipedia.org/w/api.php?action=parse&format=json&formatversion=2&origin=*&prop=wikitext&page=${encodeURIComponent(title)}`);
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const wt = (await r.json()).parse?.wikitext;
+      if (!wt) throw new Error('no page');
+      otd = parseDatePage(wt, page, wiki);
+    } else if (wiki === 'zh') {
+      // Chinese Wikipedia mixes scripts. Only the single-type feeds honor a Simplified request (the "all" feed ignores it).
+      const get = async type => {
+        const r = await fetch(`https://zh.wikipedia.org/api/rest_v1/feed/onthisday/${type}/${MM}/${DD}`, { headers: { 'Accept-Language': 'zh-hans' }, cache: 'no-cache' });
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return slim((await r.json())[type]);
+      };
+      const [selected, events, births, deaths] = await Promise.all(['selected', 'events', 'births', 'deaths'].map(get));
+      otd = { selected, events, births, deaths };
+    } else {
+      const r = await fetch(`https://${wiki}.wikipedia.org/api/rest_v1/feed/onthisday/all/${MM}/${DD}`);
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const j = await r.json();
+      otd = { selected: slim(j.selected), events: slim(j.events), births: slim(j.births), deaths: slim(j.deaths) };
+    }
+    try { localStorage.setItem(ck, JSON.stringify(otd)); } catch {}
+  } catch (err) {
+    try { otd = JSON.parse(localStorage.getItem(ck)); } catch {}
+  }
+  if (wiki !== T.wiki) return; // language changed while loading
+  if (!otd) { $('#otdList').replaceChildren(el('li', {}, el('span'), el('span', { className: 'muted', textContent: T.otdFail }))); return; }
+  // some editions have no "selected" list; fall back to all events
+  if (!otd.selected.length) otd.selected = otd.events;
+  renderHistory();
+}
+function renderHistory() {
+  if (!otd) return;
+  const list = otd[otdTab] || [];
+  const year = NOW.getFullYear();
+  $('#otdList').replaceChildren(...list.slice(0, otdCount).map(x => {
+    const ago = year - x.y;
+    const text = x.u ? el('a', { href: x.u, target: '_blank', rel: 'noopener', textContent: x.t }) : el('span', { textContent: x.t });
+    return el('li', {}, el('span', { className: 'yr' }, String(x.y < 0 ? -x.y + ' ' + T.bc : x.y), el('span', { className: 'ago', textContent: ago > 0 ? T.yrsAgo(ago.toLocaleString(LANG)) : '' })), text);
+  }));
+  $('#otdMore').hidden = list.length <= otdCount;
+}
+$('#otdTabs').onclick = e => {
+  const b = e.target.closest('button'); if (!b || !otd) return;
+  otdTab = b.dataset.k; otdCount = 8;
+  [...$('#otdTabs').children].forEach(x => x.setAttribute('aria-selected', x === b));
+  renderHistory();
+};
+$('#otdMore').onclick = () => { otdCount += 8; renderHistory(); };
+
+/* ---------------- export / import ---------------- */
+$('#exportBtn').onclick = () => {
+  const data = Object.fromEntries(Object.entries(entries).filter(([, e]) => !isEmpty(e)));
+  const blob = new Blob([JSON.stringify({ app: 'daily-ponder', version: 2, exported: new Date().toISOString(), entries: data, favorites: favs.ids }, null, 2)], { type: 'application/json' });
+  const a = el('a', { href: URL.createObjectURL(blob), download: `daily-ponder-${TODAY}.json` });
+  a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+};
+$('#importBtn').onclick = () => $('#importFile').click();
+$('#importFile').onchange = async e => {
+  const f = e.target.files[0]; if (!f) return;
+  try {
+    const j = JSON.parse(await f.text());
+    if (j.app !== 'daily-ponder' || typeof j.entries !== 'object') throw new Error('not a Daily Ponder file');
+    let n = 0;
+    for (const [k, v] of Object.entries(j.entries)) {
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(k)) continue;
+      if (!entries[k] || (v.updated || 0) > (entries[k].updated || 0)) { entries[k] = v; n++; cloud.save(k); }
+    }
+    if (Array.isArray(j.favorites)) setFavs([...new Set([...favs.ids, ...j.favorites])]);
+    persist(); renderAll(); toast(T.imported(n));
+  } catch (err) { toast(T.importFail + err.message); }
+  e.target.value = '';
+};
+
+/* ---------------- login + sync (Firebase, Google only) ---------------- */
+const cloud = { save() {}, saveFavs() {} };
+let renderAuth = () => {
+  $('#auth').replaceChildren(el('button', { textContent: T.signIn, disabled: true, title: T.notSetup }));
+};
+async function initAuth() {
+  if (!firebaseConfig) return renderAuth();
+  const V = '10.12.2', base = `https://www.gstatic.com/firebasejs/${V}/`;
+  const [{ initializeApp }, A, F] = await Promise.all([
+    import(base + 'firebase-app.js'), import(base + 'firebase-auth.js'), import(base + 'firebase-firestore.js'),
+  ]);
+  const app = initializeApp(firebaseConfig);
+  const auth = A.getAuth(app), db = F.getFirestore(app);
+  let user = null;
+  const pending = new Map();
+  const later = (key, fn) => {
+    if (!user) return;
+    clearTimeout(pending.get(key));
+    pending.set(key, setTimeout(async () => {
+      pending.delete(key);
+      try { await fn(); setStatus('synced'); } catch (err) { setStatus('syncFail', err.code); }
+    }, 800));
+  };
+  cloud.save = k => later(k, () => F.setDoc(F.doc(db, 'users', user.uid, 'days', k), entries[k]));
+  cloud.saveFavs = () => later('favs', () => F.setDoc(F.doc(db, 'users', user.uid, 'meta', 'favorites'), favs));
+  renderAuth = () => {
+    const box = $('#auth');
+    if (!user) {
+      box.replaceChildren(el('button', { className: 'primary', textContent: T.signIn, onclick: () =>
+        A.signInWithPopup(auth, new A.GoogleAuthProvider()).catch(err => toast(T.signFail + err.code)) }));
+      return;
+    }
+    box.replaceChildren(
+      user.photoURL ? el('img', { src: user.photoURL, alt: '', referrerPolicy: 'no-referrer' }) : '',
+      el('span', { className: 'name', textContent: user.displayName || user.email }),
+      el('button', { textContent: T.signOut, onclick: () => A.signOut(auth) }));
+  };
+  A.onAuthStateChanged(auth, async u => {
+    user = u;
+    renderAuth();
+    if (!u) return setStatus('local');
+    setStatus('syncing');
+    try {
+      const snap = await F.getDocs(F.collection(db, 'users', u.uid, 'days'));
+      const remote = {};
+      snap.forEach(d => { remote[d.id] = d.data(); });
+      for (const [k, r] of Object.entries(remote)) if (!entries[k] || (r.updated || 0) > (entries[k].updated || 0)) entries[k] = r;
+      for (const [k, e] of Object.entries(entries)) if (!isEmpty(e) && (!remote[k] || (e.updated || 0) > (remote[k].updated || 0))) cloud.save(k);
+      const rf = (await F.getDoc(F.doc(db, 'users', u.uid, 'meta', 'favorites'))).data();
+      if (rf && (rf.updated || 0) > (favs.updated || 0)) { favs = rf; persistFavs(); }
+      else if (favs.updated) cloud.saveFavs();
+      persist(); renderAll(); renderFavBtn();
+      setStatus('synced');
+    } catch (err) { setStatus('syncFail', err.code); }
+  });
+}
+
+/* ---------------- theme ---------------- */
+// Auto follows the system setting; Light/Dark override it. Stored per device.
+const THEMES = ['auto', 'light', 'dark'], THEME_ICON = { auto: '◐', light: '☀', dark: '☾' };
+let theme = document.documentElement.dataset.theme || 'auto';
+function renderTheme() { const b = $('#theme'); b.textContent = THEME_ICON[theme]; b.title = b.ariaLabel = T.theme[theme]; }
+$('#theme').onclick = () => {
+  theme = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
+  if (theme === 'auto') delete document.documentElement.dataset.theme; else document.documentElement.dataset.theme = theme;
+  try { if (theme === 'auto') localStorage.removeItem('ponder.theme'); else localStorage.setItem('ponder.theme', theme); } catch {}
+  renderTheme();
+};
+
+/* ---------------- today's read ---------------- */
+// Links are the ones confirmed by the fact-check (Wikipedia article / DOI); otherwise a search.
+const readDaily = (dayNum * 7907 + 13) % READS.length;
+let readShown = readDaily;
+const readLink = r => r.wp ? 'https://en.wikipedia.org/wiki/' + encodeURIComponent(r.wp.replace(/ /g, '_'))
+  : r.doi ? 'https://doi.org/' + r.doi
+  : r.k === 'book' || r.f === 'essay' ? 'https://en.wikipedia.org/wiki/Special:Search?search=' + encodeURIComponent(`${r.t} ${r.a}`)
+  : 'https://scholar.google.com/scholar?q=' + encodeURIComponent(`"${r.t}" ${r.a}`);
+function renderRead(animate) {
+  const r = READS[readShown], box = $('#readBox');
+  const apply = () => {
+    $('#rField').textContent = T.fields[r.f] || r.f;
+    $('#rKind').textContent = r.k === 'paper' ? T.paper : T.book;
+    $('#rTitle').textContent = r.t;
+    $('#rBy').textContent = [r.a, r.y < 0 ? -r.y + ' ' + T.bc : r.y, r.v].filter(Boolean).join(' · ');
+    $('#rWhy').textContent = r.w;
+    $('#rLink').href = readLink(r);
+    box.classList.remove('out');
+  };
+  if (!animate) return apply();
+  box.classList.add('out'); setTimeout(apply, 300);
+}
+$('#rNext').onclick = () => { let n; do { n = Math.floor(Math.random() * READS.length); } while (n === readShown && READS.length > 1); readShown = n; renderRead(true); };
+
+/* ---------------- boot ---------------- */
+function renderAll() { fillToday(); renderCalendar(); renderDetail(); renderPast(); renderStreak(); renderYear(); renderFavs(); }
+showQuote(dailyIndex, false);
+applyLang();
+renderAll();
+loadHistory();
+initAuth().catch(err => { $('#auth').replaceChildren(el('span', { className: 'muted', textContent: T.offline })); console.error(err); });
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('sw.js');
+// The installed app can stay open for days: when the date changes (e.g. past midnight), reload so writing goes to the new day.
+// Never reload while someone is typing.
+if (!override) {
+  const checkDay = () => { if (keyOf(new Date()) !== TODAY && !document.activeElement?.matches('input')) location.reload(); };
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) checkDay(); });
+  setInterval(checkDay, 60 * 1000);
+}
+</script>
+</body>
+</html>
